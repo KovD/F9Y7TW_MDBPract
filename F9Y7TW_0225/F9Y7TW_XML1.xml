@@ -1,0 +1,45 @@
+<vendeglatas>
+    <luxusbar BarID="b1">
+        <nev></nev>
+        <varos></varos>
+    </luxusbar>
+
+    <patron PatID="p1" Bejelentve="b1">
+        <ig.szam></ig.szam>
+        <szulido></szulido>
+        <lakcim></lakcim>
+        <patreon_email_cim></patreon_email_cim>
+        <kor></kor>
+        <nev>
+            <titulus></titulus>
+            <keresztnev></keresztnev>
+            <vezeteknev></vezeteknev>
+        </nev>
+    </patron>
+
+    <dolgozo SzemID="sz1" Dolgozik="d1">
+        <ig.szam></ig.szam>
+        <szulido></szulido>
+        <lakcim></lakcim>
+        <dolgozo_email_cim></dolgozo_email_cim>
+        <kor></kor>
+        <nev>
+            <keresztnev></keresztnev>
+            <vezeteknev></vezeteknev>
+        </nev>
+    </dolgozo>
+
+    <besszallitoceg SzallID="sz1">
+        <nev></nev>
+        <telephely></telephely>
+    </besszallitoceg>
+
+    <termek TermID="t1">
+        <termeknev></termeknev>
+        <Ar_db></Ar_db>
+        <allergen></allergen>
+        <kezdoar></kezdoar>
+        <mennyiseg></mennyiseg>
+    </termek>
+
+</vendeglatas>

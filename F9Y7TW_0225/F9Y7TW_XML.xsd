@@ -1,0 +1,118 @@
+<xs:schema xmlns:xs="http://w3.org./2001/XMLSchema" ElementFormDefault="qualified">
+
+<element name="vendeglatas">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="etterem" type="etteremTipus" maxOccurs="unbound"/>
+            <xs:element name="foszakacs" type="foszakacsTipus" maxOccurs="unbounded"/>
+            <xs:element name="szakacs" type="szakacsTipus" maxOccurs="unbounded"/>
+            <xs:element name="gyakornok" type="gyakornokTipus" maxOccurs="unbounded"/>
+            <xs:element name="vendeg" type="vendegTipus" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:key name="etterem_kulcs">
+        <xs:selector xpath="etterem" />
+        <xs:field xpath="@ekod" />
+    </xs:key>
+
+    <xs:key name="foszakacs_kulcs">
+        <xs:selector xpath="foszakacs" />
+        <xs:field xpath="@fkod" />
+    </xs:key>
+
+    <xs:key name="szakacs_kulcs">
+        <xs:selector xpath="szakacs" />
+        <xs:field xpath="@szkod" />
+    </xs:key>
+
+    <xs:key name="gyakornok_kulcs">
+        <xs:selector xpath="gyakornok" />
+        <xs:field xpath="@gykod" />
+    </xs:key>
+
+    <xs:key name="vendeg_kulcs">
+        <xs:selector xpath="vendeg" />
+        <xs:field xpath="@vkod" />
+    </xs:key>
+
+    <xs:keyref reffer="etterem_kulcs" name="etterem_idegen_kulcs">
+        <xs:selector xpath="rendeles" />
+        <xs:field x_path="@e_v_e" />
+    </xs:keyref>
+
+    <xs:keyref reffer="vendeg_kulcs" name="vendeg_idegen_kulcs">
+        <xs:selector xpath="rendeles" />
+        <xs:field x_path="@e_v_v" />
+    </xs:keyref>
+
+    <xs:keyref reffer="etterem_kulcs" name="etterem_foszakacs_idegen_kulcs">
+        <xs:selector xpath="foszakacs" />
+        <xs:field x_path="@e_f" />
+    </xs:keyref>
+
+    <xs:keyref reffer="etterem_kulcs" name="etterem_szakacs_idegen_kulcs">
+        <xs:selector xpath="szakacs" />
+        <xs:field x_path="@e_sz" />
+    </xs:keyref>
+
+    <xs:keyref reffer="etterem_kulcs" name="etterem_gyakornok_idegen_kulcs">
+        <xs:selector xpath="gyakornok" />
+        <xs:field x_path="@e_gy" />
+    </xs:keyref>
+
+    <xs:unique name="unique_szakacs">
+        <xs:selector xpath="foszakacs" />
+        <xs:field x_path="@e_f" />
+    </xs:unique>
+
+</element>
+
+<xs:complexType name="etteremTipus">
+    <xs:sequence>
+        <xs:element name="nev" type="xs:string"/>
+        <xs:element name="cim" type="cimTipus"/>
+        <xs:element name="csillag" type="xs:integer"/>
+    </xs:sequence>
+    <xs:attribute name="ekod" type="xs:string" use="requiered"/>
+</xs:complexType>
+
+<xs:complexType name="cimTipus">
+    <xs:sequence>
+        <xs:element name="varos" type="xs:string"/>
+        <xs:element name="utca" type="xs:string"/>
+        <xs:element name="hazszam" type="xs:integer"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="foszakacsTipus">
+    <xs:sequence>
+        <xs:element name="nev" type="xs:string"/>
+        <xs:element name="eletkor" type="xs:integer"/>
+        <xs:element name="vegzettseg" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="fkod" type="xs:string" use="requiered"/>
+    <xs:attribute name="e_f" type="xs:string" use="requiered"/>
+</xs:complexType>
+
+<xs:complexType name="szakacsTipus">
+    <xs:sequence>
+        <xs:element name="nev" type="xs:string"/>
+        <xs:element name="reszleg" type="xs:string"/>
+        <xs:element name="vegzettseg" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="fkod" type="xs:string" use="requiered"/>
+    <xs:attribute name="e_f" type="xs:string" use="requiered"/>
+</xs:complexType>
+
+<xs:complexType name="gyakornokTipus">
+    <xs:sequence>
+        <xs:element name="nev" type="xs:string"/>
+        <xs:element name="gyakorlat" type="gyakorlatTipus"/>
+        <xs:element name="muszak" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="fkod" type="xs:string" use="requiered"/>
+    <xs:attribute name="e_f" type="xs:string" use="requiered"/>
+</xs:complexType>
+
+</xs:schema>
