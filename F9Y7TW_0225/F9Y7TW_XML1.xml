@@ -42,4 +42,8 @@
         <mennyiseg></mennyiseg>
     </termek>
 
+    <kezbesit b_K="1b" k_b="1k">
+        <datum></datum>
+    </kezbesit>
+
 </vendeglatas>

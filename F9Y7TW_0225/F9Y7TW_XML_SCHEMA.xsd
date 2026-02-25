@@ -1,0 +1,137 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="vendeglatas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="luxusbar" type="luxusbarTipus" maxOccurs="unbounded"/>
+                <xs:element name="patron" type="patronTipus" maxOccurs="unbounded"/>
+                <xs:element name="dolgozo" type="dolgozoTipus" maxOccurs="unbounded"/>
+                <xs:element name="besszallitoceg" type="besszallitocegTipus" maxOccurs="unbounded"/>
+                <xs:element name="termek" type="termekTipus" maxOccurs="unbounded"/>
+                <xs:element name="kezbesit" type="kezbesitTipus" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:key name="luxusbar_kulcs">
+            <xs:selector xpath="luxusbar" />
+            <xs:field xpath="@BarID" />
+        </xs:key>
+        <xs:key name="patron_kulcs">
+            <xs:selector xpath="patron" />
+            <xs:field xpath="@PatID" />
+        </xs:key>
+        <xs:key name="dolgozo_kulcs">
+            <xs:selector xpath="dolgozo" />
+            <xs:field xpath="@SzemID" />
+        </xs:key>
+        <xs:key name="besszallitoceg_kulcs">
+            <xs:selector xpath="besszallitoceg" />
+            <xs:field xpath="@SzallID" />
+        </xs:key>
+        <xs:key name="termek_kulcs">
+            <xs:selector xpath="termek" />
+            <xs:field xpath="@TermID" />
+        </xs:key>
+
+        <xs:keyref refer="luxusbar_kulcs" name="patron_bar_idegen_kulcs">
+            <xs:selector xpath="patron" />
+            <xs:field xpath="@Bejelentve" />
+        </xs:keyref>
+        <xs:keyref refer="luxusbar_kulcs" name="dolgozo_bar_idegen_kulcs">
+            <xs:selector xpath="dolgozo" />
+            <xs:field xpath="@Dolgozik" />
+        </xs:keyref>
+
+        <xs:keyref refer="luxusbar_kulcs" name="kezbesit_bar_idegen_kulcs">
+            <xs:selector xpath="kezbesit" />
+            <xs:field xpath="@b_K" />
+        </xs:keyref>
+        <xs:keyref refer="besszallitoceg_kulcs" name="kezbesit_szallito_idegen_kulcs">
+            <xs:selector xpath="kezbesit" />
+            <xs:field xpath="@k_b" />
+        </xs:keyref>
+
+        <xs:keyref refer="besszallitoceg_kulcs" name="termek_szallito_idegen_kulcs">
+            <xs:selector xpath="termek" />
+            <xs:field xpath="@SzallitoID" />
+        </xs:keyref>
+    </xs:element>
+
+    <xs:complexType name="luxusbarTipus">
+        <xs:sequence>
+            <xs:element name="nev" type="xs:string"/>
+            <xs:element name="varos" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="BarID" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="patronTipus">
+        <xs:sequence>
+            <xs:element name="ig.szam" type="xs:string"/>
+            <xs:element name="szulido" type="xs:date"/>
+            <xs:element name="lakcim" type="xs:string"/>
+            <xs:element name="patreon_email_cim" type="xs:string"/>
+            <xs:element name="kor" type="xs:integer"/>
+            <xs:element name="nev">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="titulus" type="xs:string" minOccurs="0"/>
+                        <xs:element name="keresztnev" type="xs:string"/>
+                        <xs:element name="vezeteknev" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="PatID" type="xs:string" use="required"/>
+        <xs:attribute name="Bejelentve" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="dolgozoTipus">
+        <xs:sequence>
+            <xs:element name="ig.szam" type="xs:string"/>
+            <xs:element name="szulido" type="xs:date"/>
+            <xs:element name="lakcim" type="xs:string"/>
+            <xs:element name="dolgozo_email_cim" type="xs:string"/>
+            <xs:element name="kor" type="xs:integer"/>
+            <xs:element name="nev">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="keresztnev" type="xs:string"/>
+                        <xs:element name="vezeteknev" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="SzemID" type="xs:string" use="required"/>
+        <xs:attribute name="Dolgozik" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="besszallitocegTipus">
+        <xs:sequence>
+            <xs:element name="nev" type="xs:string"/>
+            <xs:element name="telephely" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="SzallID" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="termekTipus">
+        <xs:sequence>
+            <xs:element name="termeknev" type="xs:string"/>
+            <xs:element name="Ar_db" type="xs:integer"/>
+            <xs:element name="allergen" type="xs:string"/>
+            <xs:element name="kezdoar" type="xs:integer"/>
+            <xs:element name="mennyiseg" type="xs:integer"/>
+        </xs:sequence>
+        <xs:attribute name="TermID" type="xs:string" use="required"/>
+        <xs:attribute name="SzallitoID" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="kezbesitTipus">
+        <xs:sequence>
+            <xs:element name="datum" type="xs:date"/>
+        </xs:sequence>
+        <xs:attribute name="b_K" type="xs:string" use="required"/>
+        <xs:attribute name="k_b" type="xs:string" use="required"/>
+    </xs:complexType>
+
+</xs:schema>
