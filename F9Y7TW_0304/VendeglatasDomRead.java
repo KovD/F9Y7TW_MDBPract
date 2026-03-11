@@ -1,4 +1,3 @@
-package app.konrads.vendeglatas;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
