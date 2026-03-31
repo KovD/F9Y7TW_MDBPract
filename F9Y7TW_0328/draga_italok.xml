@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<vendeglatas>
+  <luxusbar BarID="b1">
+    <nev>Éjszaka Fénye</nev>
+    <varos>Budapest</varos>
+  </luxusbar>
+  <luxusbar BarID="b2">
+    <nev>Arany Kehely</nev>
+    <varos>Debrecen</varos>
+  </luxusbar>
+  <luxusbar BarID="b3">
+    <nev>Ezüst Hold</nev>
+    <varos>Szeged</varos>
+  </luxusbar>
+  <luxusbar BarID="b4">
+    <nev>Gyémánt Klub</nev>
+    <varos>Budapest</varos>
+  </luxusbar>
+  <patron PatID="p1">
+    <ig.szam>123456AB</ig.szam>
+    <szulido>1980-05-15</szulido>
+    <lakcim>1052 Budapest, Váci utca 10.</lakcim>
+    <patreon_email_cim>pelda.patron@email.hu</patreon_email_cim>
+    <kor>45</kor>
+    <nev>
+      <titulus>Dr.</titulus>
+      <keresztnev>János</keresztnev>
+      <vezeteknev>Kovács</vezeteknev>
+    </nev>
+  </patron>
+  <patron PatID="p2">
+    <ig.szam>234567XY</ig.szam>
+    <szulido>1975-08-22</szulido>
+    <lakcim>4024 Debrecen, Piac utca 5.</lakcim>
+    <patreon_email_cim>nagy.peter@email.hu</patreon_email_cim>
+    <kor>50</kor>
+    <nev>
+      <keresztnev>Péter</keresztnev>
+      <vezeteknev>Nagy</vezeteknev>
+    </nev>
+  </patron>
+  <patron PatID="p3">
+    <ig.szam>345678ZW</ig.szam>
+    <szulido>1990-01-10</szulido>
+    <lakcim>6720 Szeged, Kárász utca 2.</lakcim>
+    <patreon_email_cim>szabo.eva@email.hu</patreon_email_cim>
+    <kor>36</kor>
+    <nev>
+      <titulus>Prof.</titulus>
+      <keresztnev>Éva</keresztnev>
+      <vezeteknev>Szabó</vezeteknev>
+    </nev>
+  </patron>
+  <patron PatID="p4">
+    <ig.szam>456789QW</ig.szam>
+    <szulido>1988-11-30</szulido>
+    <lakcim>1024 Budapest, Margit krt. 15.</lakcim>
+    <patreon_email_cim>kiss.gabor@email.hu</patreon_email_cim>
+    <kor>37</kor>
+    <nev>
+      <keresztnev>Gábor</keresztnev>
+      <vezeteknev>Kiss</vezeteknev>
+    </nev>
+  </patron>
+  <dolgozo SzemID="sz1">
+    <ig.szam>654321CD</ig.szam>
+    <szulido>1995-10-20</szulido>
+    <lakcim>1073 Budapest, Erzsébet krt. 12.</lakcim>
+    <dolgozo_email_cim>pelda.dolgozo@email.hu</dolgozo_email_cim>
+    <kor>30</kor>
+    <nev>
+      <keresztnev>Anna</keresztnev>
+      <vezeteknev>Tóth</vezeteknev>
+    </nev>
+  </dolgozo>
+  <dolgozo SzemID="sz2">
+    <ig.szam>765432EF</ig.szam>
+    <szulido>1998-03-12</szulido>
+    <lakcim>4032 Debrecen, Egyetem tér 1.</lakcim>
+    <dolgozo_email_cim>varga.bence@email.hu</dolgozo_email_cim>
+    <kor>28</kor>
+    <nev>
+      <keresztnev>Bence</keresztnev>
+      <vezeteknev>Varga</vezeteknev>
+    </nev>
+  </dolgozo>
+  <dolgozo SzemID="sz3">
+    <ig.szam>876543GH</ig.szam>
+    <szulido>1992-07-05</szulido>
+    <lakcim>6722 Szeged, Tisza Lajos krt. 8.</lakcim>
+    <dolgozo_email_cim>farkas.dora@email.hu</dolgozo_email_cim>
+    <kor>33</kor>
+    <nev>
+      <keresztnev>Dóra</keresztnev>
+      <vezeteknev>Farkas</vezeteknev>
+    </nev>
+  </dolgozo>
+  <dolgozo SzemID="sz4">
+    <ig.szam>987654IJ</ig.szam>
+    <szulido>2000-12-01</szulido>
+    <lakcim>1111 Budapest, Bartók Béla út 20.</lakcim>
+    <dolgozo_email_cim>horvath.mate@email.hu</dolgozo_email_cim>
+    <kor>25</kor>
+    <nev>
+      <keresztnev>Máté</keresztnev>
+      <vezeteknev>Horváth</vezeteknev>
+    </nev>
+  </dolgozo>
+  <besszallitoceg SzallID="sz1">
+    <nev>ItalNagyker Kft.</nev>
+    <telephely>2040 Budaörs, Gyár utca 1.</telephely>
+  </besszallitoceg>
+  <besszallitoceg SzallID="sz2">
+    <nev>Borfutár Zrt.</nev>
+    <telephely>3300 Eger, Szépasszonyvölgy 10.</telephely>
+  </besszallitoceg>
+  <besszallitoceg SzallID="sz3">
+    <nev>Kézműves Sörök Kft.</nev>
+    <telephely>1095 Budapest, Soroksári út 48.</telephely>
+  </besszallitoceg>
+  <besszallitoceg SzallID="sz4">
+    <nev>GyümölcsLé Manufaktúra</nev>
+    <telephely>6000 Kecskemét, Gyár utca 2.</telephely>
+  </besszallitoceg>
+  <termek TermID="t1" SzallID="sz1">
+    <termeknev>Prémium Vodka</termeknev>
+    <Ar_db>24000</Ar_db>
+    <allergen>Nincs</allergen>
+    <kezdoar>9500</kezdoar>
+    <mennyiseg>100</mennyiseg>
+  </termek>
+  <termek TermID="t2" SzallID="sz2">
+    <termeknev>Egri Bikavér</termeknev>
+    <Ar_db>9000</Ar_db>
+    <allergen>Szulfitok</allergen>
+    <kezdoar>3000</kezdoar>
+    <mennyiseg>50</mennyiseg>
+  </termek>
+  <termek TermID="t3" SzallID="sz3">
+    <termeknev>IPA Sör</termeknev>
+    <Ar_db>3000</Ar_db>
+    <allergen>Glutén</allergen>
+    <kezdoar>900</kezdoar>
+    <mennyiseg>200</mennyiseg>
+  </termek>
+  <termek TermID="t4" SzallID="sz4">
+    <termeknev>Narancslé 100%</termeknev>
+    <Ar_db>4000</Ar_db>
+    <allergen>Nincs</allergen>
+    <kezdoar>1200</kezdoar>
+    <mennyiseg>80</mennyiseg>
+  </termek>
+  <kezbesit b_K="1b" k_b="1k">
+    <datum>2026-03-20</datum>
+  </kezbesit>
+  <kezbesit b_K="b2" k_b="k2">
+    <datum>2026-03-22</datum>
+  </kezbesit>
+  <kezbesit b_K="b3" k_b="k3">
+    <datum>2026-03-25</datum>
+  </kezbesit>
+  <kezbesit b_K="b4" k_b="k4">
+    <datum>2026-03-28</datum>
+  </kezbesit>
+  <bejelentve b_k="1b" b_p="p1"></bejelentve>
+  <bejelentve b_k="b2" b_p="p2"></bejelentve>
+  <bejelentve b_k="b3" b_p="p3"></bejelentve>
+  <bejelentve b_k="b4" b_p="p4"></bejelentve>
+  <dolgozik b_k="1b" b_d="sz1"></dolgozik>
+  <dolgozik b_k="b2" b_d="sz2"></dolgozik>
+  <dolgozik b_k="b3" b_d="sz3"></dolgozik>
+  <dolgozik b_k="b4" b_d="sz4"></dolgozik>
+</vendeglatas>
