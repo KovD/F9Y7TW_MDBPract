@@ -1,0 +1,140 @@
+--------------------------------- első feladat------------------------------------------------
+
+CREATE OR REPLACE TYPE szemely_t AS OBJECT (
+    nev VARCHAR2(100),
+    MEMBER FUNCTION greet RETURN VARCHAR2,
+    STATIC FUNCTION eletkor RETURN INTEGER,
+    ORDER MEMBER FUNCTION hasonlit(masik_szemely szemely_t) RETURN INTEGER
+) NOT FINAL;
+
+
+CREATE OR REPLACE TYPE BODY szemely_t AS
+    MEMBER FUNCTION greet RETURN VARCHAR2 IS
+    BEGIN
+        RETURN 'A nevem ' || self.nev;
+    END;
+
+    STATIC FUNCTION eletkor RETURN INTEGER IS
+    BEGIN
+        RETURN 18;
+    END;
+
+    ORDER MEMBER FUNCTION hasonlit(masik_szemely szemely_t) RETURN INTEGER IS
+    BEGIN
+        IF self.nev < masik_szemely.nev THEN
+            RETURN -1;
+        ELSIF self.nev > masik_szemely.nev THEN
+            RETURN 1;
+        ELSE
+            RETURN 0;
+        END IF;
+    END;
+END;
+
+-------------------------------- Második feladat --------------------------------------------------
+
+CREATE OR REPLACE TYPE foszakacs_t UNDER szemely_t (
+    fkod VARCHAR2(20),
+    eletkor_sz NUMBER,
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2
+);
+
+CREATE OR REPLACE TYPE BODY foszakacs_t AS
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2 IS
+    BEGIN
+        RETURN 'Főszakács vagyok, a nevem' || SELF.nev || ', Korom: ' || SELF.eletkor_sz;
+    END;
+END;
+
+
+CREATE OR REPLACE TYPE vendeg_t UNDER szemely_t (
+    vkod VARCHAR2(20),
+    eletkor_sz NUMBER,
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2
+);
+
+CREATE OR REPLACE TYPE BODY vendeg_t AS
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2 IS
+    BEGIN
+        RETURN 'Vendég vagyok, a nevem' || SELF.nev || ', Korom: ' || SELF.eletkor_sz;
+    END;
+END;
+
+---------------------------------------Harmadik feladat--------------------------------------------
+
+
+CREATE TABLE etterem_szemelyek_tbl OF szemely_t;
+
+INSERT INTO etterem_szemelyek_tbl
+SELECT vendeg_t(x.nev, x.vkod, x.eletkor)
+FROM VENDEGLATAS_XML v,
+    XMLTABLE('/vendeglatas/vendeg'
+    PASSING v.adat
+    COLUMNS
+        vkod VARCHAR2(10) PATH '@vkod',
+        nev VARCHAR2(100) PATH 'nev',
+        eletkor NUMBER PATH 'eletkor'
+        ) x;
+
+
+INSERT INTO etterem_szemelyek_tbl
+SELECT foszakacs_t(x.nev, x.fkod, x.eletkor_sz)
+FROM VENDEGLATAS_XML v,
+    XMLTABLE('/vendeglatas/foszakacs'
+    PASSING v.adat
+    COLUMNS
+        fkod VARCHAR2(10) PATH '@fkod',
+        nev VARCHAR2(100) PATH 'nev',
+        eletkor_sz NUMBER PATH 'eletkor_sz'
+        ) x;
+
+----------------------------------------Negyedik feladat------------------------------------------------
+
+SELECT szemely_t.eletkor() AS minimum_eletkor FROM DUAL;
+
+SELECT s.nev, s.greet() AS bemutatkozas
+FROM etterem_szemelyek_tbl s
+ORDER BY VALUE(s);
+
+SELECT s.nev
+FROM etterem_szemelyek_tbl s
+WHERE value(s) IS OF (vendeg_t);
+
+SELECT s.nev, TREAT(VALUE(s) AS vendeg_t).eletkor_sz AS eletkor
+FROM etterem_szemelyek_tbl s
+WHERE VALUE(s) IS OF (vendeg_t);
+
+--------------------------------------Ötödik feladat-------------------------------------------------------
+CREATE OR REPLACE TYPE szakacs2_t UNDER szemely_t (
+    szkod VARCHAR2(20),
+    reszleg VARCHAR2(100),
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2
+);
+
+
+CREATE OR REPLACE TYPE BODY szakacs2_t AS
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2 IS
+    BEGIN
+        RETURN 'Szakács vagyok a(z) ' || self.reszleg || ' részlegen, a nevem: ' || self.nev;
+    END;
+END;
+
+INSERT INTO etterem_szemelyek_tbl
+SELECT szakacs2_t(x.nev, x.szkod, x.reszleg)
+FROM VENDEGLATAS_XML v,
+    XMLTABLE('/vendeglatas/szakacs'
+    PASSING v.adat
+    COLUMNS
+        szkod VARCHAR2(10) PATH '@szkod',
+        nev VARCHAR2(10) PATH 'nev',
+        reszleg VARCHAR2(100) PATH 'reszleg'
+        ) x;
+		
+SELECT VALUE(p).nev AS nev,
+       VALUE(p).greet() AS bemutatkozas
+FROM etterem_szemelyek_tbl p
+WHERE VALUE(p) IS OF (foszakacs_t, szakacs2_t);
+
+SELECT s.nev, TREAT(VALUE(s) AS vendeg_t).eletkor_sz AS eletkor
+FROM etterem_szemelyek_tbl s
+WHERE VALUE(s) IS OF (vendeg_t);

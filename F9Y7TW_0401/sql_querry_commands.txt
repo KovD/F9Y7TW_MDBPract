@@ -1,0 +1,145 @@
+SELECT x.ekaod, x.nev, x.varos,x.utca, x.hazszam, x.csillag
+FROM vendeglatas_xml v, XMLTABLE('/vendeglatas/etterem'
+    PASSING v.adat
+    COLUMNS
+    ekaod VARCHAR2(10) PATH '@ekod',
+    nev VARCHAR2(200) PATH 'nev',
+    varos VARCHAR2(100) PATH 'cim/varos',
+    utca VARCHAR2(200) PATH 'cim/utca',
+    hazszam VARCHAR2(10) PATH 'cim/hazszam',
+    csillag NUMBER PATH 'csillag'
+)x;
+
+
+SELECT x.ekaod, x.nev, x.csillag
+FROM vendeglatas_xml v, XMLTABLE('/vendeglatas/etterem'
+    PASSING v.adat
+    COLUMNS
+    ekaod VARCHAR2(10) PATH '@ekod',
+    nev VARCHAR2(200) PATH 'nev',
+    csillag NUMBER PATH 'csillag'
+)x
+WHERE x.csillag = 5;
+
+SELECT sz.szkod, sz.nev, sz.reszleg, e.nev AS etterem_nev
+FROM vendeglatas_xml v, 
+    XMLTABLE('/vendeglatas/szakacs'
+        PASSING v.adat
+        COLUMNS
+        szkod VARCHAR2(10) PATH '@szkod',
+        e_sz VARCHAR2(10) PATH '@e_sz',
+        nev VARCHAR2(200) PATH 'nev',
+        reszleg VARCHAR2(100) PATH 'reszleg',
+        eletkor NUMBER PATH 'eletkor'
+    ) sz,
+    XMLTABLE('/vendeglatas/etterem'
+        PASSING v.adat
+        COLUMNS
+        ekod VARCHAR2(10) PATH '@ekod',
+        nev VARCHAR2(200) PATH 'nev'
+    ) e
+WHERE sz.e_sz = e.ekod;
+
+CREATE OR REPLACE TYPE cim_t AS OBJECT (
+    varos VARCHAR2(100),
+    utca VARCHAR2(200),
+    hazszam VARCHAR2(10)
+);
+/
+
+CREATE OR REPLACE TYPE etterem_t AS OBJECT (
+    ekod VARCHAR2(10),
+    nev VARCHAR2(200),
+    csillag NUMBER(1),
+    cim cim_t,
+    MEMBER FUNCTION leiras RETURN VARCHAR2
+);
+/
+
+CREATE OR REPLACE TYPE BODY etterem_t AS
+    MEMBER FUNCTION leiras RETURN VARCHAR2 IS
+    BEGIN
+        RETURN SELF.nev || ' (' || SELF.csillag || ' csillag) – ' || SELF.cim.varos;
+    END leiras;
+END;
+/
+
+CREATE TABLE ettermek OF etterem_t (
+    PRIMARY KEY (ekod)
+);
+
+INSERT INTO ettermek
+SELECT etterem_t (
+        x.ekod,
+        x.nev,
+        x.csillag,
+        cim_t(x.varos, x.utca, x.hazszam)
+)
+    FROM vendeglatas_xml v, XMLTABLE('/vendeglatas/etterem'
+    PASSING v.adat
+    COLUMNS
+        ekod VARCHAR2(10) PATH '@ekod',
+        nev VARCHAR2(200) PATH 'nev',
+        varos VARCHAR(100) PATH 'cim/varos',
+        utca VARCHAR(200) PATH 'cim/utca',
+        hazszam VARCHAR(200) PATH 'cim/hazszam',
+        csillag NUMBER PATH 'csillag'
+)x;
+
+COMMIT;
+
+SELECT e.ekod, e.nev, e.csillag, e.cim.varos, e.cim.utca
+FROM ettermek e;
+
+SELECT e.leiras() AS leiras
+FROM ettermek e;
+
+SELECT e.cim.varos AS varos,
+    COUNT(*) AS db,
+    AVG(e.csillag) AS atlag_csillag
+    FROM ettermek e
+    GROUP BY e.cim.varos
+    ORDER BY atlag_csillag DESC;
+
+UPDATE ettermek e
+    SET e.csillag = 5
+WHERE e.ekod = 'e1';
+
+DELETE FROM ettermek e
+WHERE e.csillag < 3 ;
+
+SELECT COUNT(*) AS maradt FROM ETTERMEK;
+
+CREATE OR REPLACE TYPE vegzettseg_va AS VARRAY(5) OF VARCHAR2(200);
+
+CREATE OR REPLACE TYPE SZAKACS_T AS OBJECT (
+    szkod VARCHAR2(10),
+    nev VARCHAR2(200),
+    reszleg VARCHAR2(100),
+    eletkor NUMBER,
+    vegzettsegek vegzettseg_va
+);
+/
+
+CREATE TABLE szakacsok OF szakacs_t(
+    PRIMARY KEY (szkod)
+);
+
+
+INSERT INTO szakacsok VALUES (
+    szakacs_t('sz1', 'Ötlet Elek', 'Saucier', 30,
+    vegzettseg_va('Szakközépiskola', 'Le Cordon Bleu', 'Paul Bocuse Institute'))
+);
+
+INSERT INTO szakacsok VALUES (
+    szakacs_t('sz2', 'Kocsis Tibor', 'Entremetier', 30,
+    vegzettseg_va('Szakközépiskola', 'Le Cordon Bleu'))
+);
+INSERT INTO szakacsok VALUES (
+    szakacs_t('sz3', 'Kocsán László', 'Ingyenevő', 25,
+    vegzettseg_va('BSC', 'McDonalds'))
+);
+
+SELECT s.nev, s.reszleg, v.COLUMN_VALUE AS vegzettseg
+FROM szakacsok s,
+TABLE(s.vegzettsegek) v;
