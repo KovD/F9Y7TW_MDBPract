@@ -1,0 +1,167 @@
+CREATE OR REPLACE TYPE l_szem_t AS OBJECT (
+    nev VARCHAR2(100),
+    MEMBER FUNCTION greet RETURN VARCHAR2,
+    STATIC FUNCTION alap_kor RETURN INTEGER,
+    ORDER MEMBER FUNCTION hasonlit(masik_szemely l_szem_t) RETURN INTEGER
+) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE BODY l_szem_t AS
+    MEMBER FUNCTION greet RETURN VARCHAR2 IS
+    BEGIN
+        RETURN 'A nevem ' || self.nev;
+    END;
+
+    STATIC FUNCTION alap_kor RETURN INTEGER IS
+    BEGIN
+        RETURN 18;
+    END;
+
+    ORDER MEMBER FUNCTION hasonlit(masik_szemely l_szem_t) RETURN INTEGER IS
+    BEGIN
+        IF self.nev < masik_szemely.nev THEN
+            RETURN -1;
+        ELSIF self.nev > masik_szemely.nev THEN
+            RETURN 1;
+        ELSE
+            RETURN 0;
+        END IF;
+    END;
+END;
+/
+
+CREATE OR REPLACE TYPE l_patron_t UNDER l_szem_t (
+    pid VARCHAR2(20),
+    kor NUMBER,
+    email VARCHAR2(100),
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2
+);
+/
+
+CREATE OR REPLACE TYPE BODY l_patron_t AS
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2 IS
+    BEGIN
+        RETURN 'Patrónus vagyok, nevem: ' || SELF.nev || ', Kor: ' || SELF.kor || ', Email: ' || SELF.email;
+    END;
+END;
+/
+
+CREATE OR REPLACE TYPE l_dolgozo_t UNDER l_szem_t (
+    did VARCHAR2(20),
+    kor NUMBER,
+    email VARCHAR2(100),
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2
+);
+/
+
+CREATE OR REPLACE TYPE BODY l_dolgozo_t AS
+    OVERRIDING MEMBER FUNCTION greet RETURN VARCHAR2 IS
+    BEGIN
+        RETURN 'Dolgozó vagyok, nevem: ' || SELF.nev || ', Kor: ' || SELF.kor;
+    END;
+END;
+/
+
+CREATE TABLE luxus_szemelyek_tbl OF l_szem_t;
+
+-- Patrónusok betöltése (Cím, titulus és név összefűzése)
+INSERT INTO luxus_szemelyek_tbl
+SELECT l_patron_t(
+        TRIM(x.titulus || ' ' || x.vezeteknev || ' ' || x.keresztnev), 
+        x.pid, 
+        x.kor, 
+        x.email
+    )
+FROM luxus_xml v,
+    XMLTABLE('/vendeglatas/patron'
+    PASSING v.adat
+    COLUMNS
+        pid VARCHAR2(10) PATH '@PatID',
+        titulus VARCHAR2(20) PATH 'nev/titulus',
+        vezeteknev VARCHAR2(50) PATH 'nev/vezeteknev',
+        keresztnev VARCHAR2(50) PATH 'nev/keresztnev',
+        kor NUMBER PATH 'kor',
+        email VARCHAR2(100) PATH 'patreon_email_cim'
+    ) x;
+
+-- Dolgozók betöltése
+INSERT INTO luxus_szemelyek_tbl
+SELECT l_dolgozo_t(
+        x.vezeteknev || ' ' || x.keresztnev, 
+        x.did, 
+        x.kor, 
+        x.email
+    )
+FROM luxus_xml v,
+    XMLTABLE('/vendeglatas/dolgozo'
+    PASSING v.adat
+    COLUMNS
+        did VARCHAR2(10) PATH '@SzemID',
+        vezeteknev VARCHAR2(50) PATH 'nev/vezeteknev',
+        keresztnev VARCHAR2(50) PATH 'nev/keresztnev',
+        kor NUMBER PATH 'kor',
+        email VARCHAR2(100) PATH 'dolgozo_email_cim'
+    ) x;
+
+COMMIT;
+
+-- Statikus függvény hívás
+SELECT l_szem_t.alap_kor() AS alapertelmezett_kor FROM DUAL;
+
+-- Metódushívás és rendezés
+SELECT s.nev, s.greet() AS bemutatkozas
+FROM luxus_szemelyek_tbl s
+ORDER BY VALUE(s);
+
+-- Szűrés típus alapján
+SELECT s.nev
+FROM luxus_szemelyek_tbl s
+WHERE VALUE(s) IS OF (l_patron_t);
+
+-- Downcasting (TREAT) használata patrónus specifikus adatokhoz
+SELECT s.nev, TREAT(VALUE(s) AS l_patron_t).email AS patron_email
+FROM luxus_szemelyek_tbl s
+WHERE VALUE(s) IS OF (l_patron_t);
+
+
+CREATE OR REPLACE TYPE l_termek_t AS OBJECT (
+    tid VARCHAR2(10),
+    nev VARCHAR2(100),
+    ar NUMBER,
+    kezdoar NUMBER,
+    MEMBER FUNCTION haszon RETURN NUMBER
+);
+/
+
+CREATE OR REPLACE TYPE BODY l_termek_t AS
+    MEMBER FUNCTION haszon RETURN NUMBER IS
+    BEGIN
+        -- Profit kiszámolása
+        RETURN SELF.ar - SELF.kezdoar;
+    END;
+END;
+/
+
+CREATE TABLE luxus_termekek_tbl OF l_termek_t (
+    PRIMARY KEY (tid)
+);
+
+-- Termékek betöltése XML-ből
+INSERT INTO luxus_termekek_tbl
+SELECT l_termek_t(x.tid, x.nev, x.ar, x.kar)
+FROM luxus_xml v, XMLTABLE('/vendeglatas/termek'
+    PASSING v.adat
+    COLUMNS
+        tid VARCHAR2(10) PATH '@TermID',
+        nev VARCHAR2(100) PATH 'termeknev',
+        ar NUMBER PATH 'Ar_db',
+        kar NUMBER PATH 'kezdoar'
+) x;
+
+COMMIT;
+
+-- Haszon lekérdezése az objektum metódusával
+SELECT t.nev, t.ar, t.kezdoar, t.haszon() AS profit_per_db
+FROM luxus_termekek_tbl t
+ORDER BY profit_per_db DESC;
+
