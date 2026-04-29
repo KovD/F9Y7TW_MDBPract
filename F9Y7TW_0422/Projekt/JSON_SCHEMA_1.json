@@ -1,0 +1,936 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "vendeglatas": {
+      "type": "object",
+      "properties": {
+        "luxusbar": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "nev": {
+                  "type": "string"
+                },
+                "varos": {
+                  "type": "string"
+                },
+                "_BarID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nev",
+                "varos",
+                "_BarID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "nev": {
+                  "type": "string"
+                },
+                "varos": {
+                  "type": "string"
+                },
+                "_BarID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nev",
+                "varos",
+                "_BarID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "nev": {
+                  "type": "string"
+                },
+                "varos": {
+                  "type": "string"
+                },
+                "_BarID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nev",
+                "varos",
+                "_BarID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "nev": {
+                  "type": "string"
+                },
+                "varos": {
+                  "type": "string"
+                },
+                "_BarID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nev",
+                "varos",
+                "_BarID"
+              ]
+            }
+          ]
+        },
+        "patron": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "ig.szam": {
+                  "type": "string"
+                },
+                "szulido": {
+                  "type": "string"
+                },
+                "lakcim": {
+                  "type": "string"
+                },
+                "patreon_email_cim": {
+                  "type": "string"
+                },
+                "kor": {
+                  "type": "string"
+                },
+                "nev": {
+                  "type": "object",
+                  "properties": {
+                    "titulus": {
+                      "type": "string"
+                    },
+                    "keresztnev": {
+                      "type": "string"
+                    },
+                    "vezeteknev": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "titulus",
+                    "keresztnev",
+                    "vezeteknev"
+                  ]
+                },
+                "_PatID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ig.szam",
+                "szulido",
+                "lakcim",
+                "patreon_email_cim",
+                "kor",
+                "nev",
+                "_PatID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ig.szam": {
+                  "type": "string"
+                },
+                "szulido": {
+                  "type": "string"
+                },
+                "lakcim": {
+                  "type": "string"
+                },
+                "patreon_email_cim": {
+                  "type": "string"
+                },
+                "kor": {
+                  "type": "string"
+                },
+                "nev": {
+                  "type": "object",
+                  "properties": {
+                    "keresztnev": {
+                      "type": "string"
+                    },
+                    "vezeteknev": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "keresztnev",
+                    "vezeteknev"
+                  ]
+                },
+                "_PatID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ig.szam",
+                "szulido",
+                "lakcim",
+                "patreon_email_cim",
+                "kor",
+                "nev",
+                "_PatID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ig.szam": {
+                  "type": "string"
+                },
+                "szulido": {
+                  "type": "string"
+                },
+                "lakcim": {
+                  "type": "string"
+                },
+                "patreon_email_cim": {
+                  "type": "string"
+                },
+                "kor": {
+                  "type": "string"
+                },
+                "nev": {
+                  "type": "object",
+                  "properties": {
+                    "titulus": {
+                      "type": "string"
+                    },
+                    "keresztnev": {
+                      "type": "string"
+                    },
+                    "vezeteknev": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "titulus",
+                    "keresztnev",
+                    "vezeteknev"
+                  ]
+                },
+                "_PatID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ig.szam",
+                "szulido",
+                "lakcim",
+                "patreon_email_cim",
+                "kor",
+                "nev",
+                "_PatID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ig.szam": {
+                  "type": "string"
+                },
+                "szulido": {
+                  "type": "string"
+                },
+                "lakcim": {
+                  "type": "string"
+                },
+                "patreon_email_cim": {
+                  "type": "string"
+                },
+                "kor": {
+                  "type": "string"
+                },
+                "nev": {
+                  "type": "object",
+                  "properties": {
+                    "keresztnev": {
+                      "type": "string"
+                    },
+                    "vezeteknev": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "keresztnev",
+                    "vezeteknev"
+                  ]
+                },
+                "_PatID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ig.szam",
+                "szulido",
+                "lakcim",
+                "patreon_email_cim",
+                "kor",
+                "nev",
+                "_PatID"
+              ]
+            }
+          ]
+        },
+        "dolgozo": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "ig.szam": {
+                  "type": "string"
+                },
+                "szulido": {
+                  "type": "string"
+                },
+                "lakcim": {
+                  "type": "string"
+                },
+                "dolgozo_email_cim": {
+                  "type": "string"
+                },
+                "kor": {
+                  "type": "string"
+                },
+                "nev": {
+                  "type": "object",
+                  "properties": {
+                    "keresztnev": {
+                      "type": "string"
+                    },
+                    "vezeteknev": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "keresztnev",
+                    "vezeteknev"
+                  ]
+                },
+                "_SzemID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ig.szam",
+                "szulido",
+                "lakcim",
+                "dolgozo_email_cim",
+                "kor",
+                "nev",
+                "_SzemID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ig.szam": {
+                  "type": "string"
+                },
+                "szulido": {
+                  "type": "string"
+                },
+                "lakcim": {
+                  "type": "string"
+                },
+                "dolgozo_email_cim": {
+                  "type": "string"
+                },
+                "kor": {
+                  "type": "string"
+                },
+                "nev": {
+                  "type": "object",
+                  "properties": {
+                    "keresztnev": {
+                      "type": "string"
+                    },
+                    "vezeteknev": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "keresztnev",
+                    "vezeteknev"
+                  ]
+                },
+                "_SzemID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ig.szam",
+                "szulido",
+                "lakcim",
+                "dolgozo_email_cim",
+                "kor",
+                "nev",
+                "_SzemID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ig.szam": {
+                  "type": "string"
+                },
+                "szulido": {
+                  "type": "string"
+                },
+                "lakcim": {
+                  "type": "string"
+                },
+                "dolgozo_email_cim": {
+                  "type": "string"
+                },
+                "kor": {
+                  "type": "string"
+                },
+                "nev": {
+                  "type": "object",
+                  "properties": {
+                    "keresztnev": {
+                      "type": "string"
+                    },
+                    "vezeteknev": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "keresztnev",
+                    "vezeteknev"
+                  ]
+                },
+                "_SzemID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ig.szam",
+                "szulido",
+                "lakcim",
+                "dolgozo_email_cim",
+                "kor",
+                "nev",
+                "_SzemID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ig.szam": {
+                  "type": "string"
+                },
+                "szulido": {
+                  "type": "string"
+                },
+                "lakcim": {
+                  "type": "string"
+                },
+                "dolgozo_email_cim": {
+                  "type": "string"
+                },
+                "kor": {
+                  "type": "string"
+                },
+                "nev": {
+                  "type": "object",
+                  "properties": {
+                    "keresztnev": {
+                      "type": "string"
+                    },
+                    "vezeteknev": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "keresztnev",
+                    "vezeteknev"
+                  ]
+                },
+                "_SzemID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ig.szam",
+                "szulido",
+                "lakcim",
+                "dolgozo_email_cim",
+                "kor",
+                "nev",
+                "_SzemID"
+              ]
+            }
+          ]
+        },
+        "besszallitoceg": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "nev": {
+                  "type": "string"
+                },
+                "telephely": {
+                  "type": "string"
+                },
+                "_SzallID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nev",
+                "telephely",
+                "_SzallID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "nev": {
+                  "type": "string"
+                },
+                "telephely": {
+                  "type": "string"
+                },
+                "_SzallID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nev",
+                "telephely",
+                "_SzallID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "nev": {
+                  "type": "string"
+                },
+                "telephely": {
+                  "type": "string"
+                },
+                "_SzallID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nev",
+                "telephely",
+                "_SzallID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "nev": {
+                  "type": "string"
+                },
+                "telephely": {
+                  "type": "string"
+                },
+                "_SzallID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nev",
+                "telephely",
+                "_SzallID"
+              ]
+            }
+          ]
+        },
+        "termek": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "termeknev": {
+                  "type": "string"
+                },
+                "Ar_db": {
+                  "type": "string"
+                },
+                "allergen": {
+                  "type": "string"
+                },
+                "kezdoar": {
+                  "type": "string"
+                },
+                "mennyiseg": {
+                  "type": "string"
+                },
+                "_TermID": {
+                  "type": "string"
+                },
+                "_SzallID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "termeknev",
+                "Ar_db",
+                "allergen",
+                "kezdoar",
+                "mennyiseg",
+                "_TermID",
+                "_SzallID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "termeknev": {
+                  "type": "string"
+                },
+                "Ar_db": {
+                  "type": "string"
+                },
+                "allergen": {
+                  "type": "string"
+                },
+                "kezdoar": {
+                  "type": "string"
+                },
+                "mennyiseg": {
+                  "type": "string"
+                },
+                "_TermID": {
+                  "type": "string"
+                },
+                "_SzallID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "termeknev",
+                "Ar_db",
+                "allergen",
+                "kezdoar",
+                "mennyiseg",
+                "_TermID",
+                "_SzallID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "termeknev": {
+                  "type": "string"
+                },
+                "Ar_db": {
+                  "type": "string"
+                },
+                "allergen": {
+                  "type": "string"
+                },
+                "kezdoar": {
+                  "type": "string"
+                },
+                "mennyiseg": {
+                  "type": "string"
+                },
+                "_TermID": {
+                  "type": "string"
+                },
+                "_SzallID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "termeknev",
+                "Ar_db",
+                "allergen",
+                "kezdoar",
+                "mennyiseg",
+                "_TermID",
+                "_SzallID"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "termeknev": {
+                  "type": "string"
+                },
+                "Ar_db": {
+                  "type": "string"
+                },
+                "allergen": {
+                  "type": "string"
+                },
+                "kezdoar": {
+                  "type": "string"
+                },
+                "mennyiseg": {
+                  "type": "string"
+                },
+                "_TermID": {
+                  "type": "string"
+                },
+                "_SzallID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "termeknev",
+                "Ar_db",
+                "allergen",
+                "kezdoar",
+                "mennyiseg",
+                "_TermID",
+                "_SzallID"
+              ]
+            }
+          ]
+        },
+        "kezbesit": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "datum": {
+                  "type": "string"
+                },
+                "_b_K": {
+                  "type": "string"
+                },
+                "_k_b": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "datum",
+                "_b_K",
+                "_k_b"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "datum": {
+                  "type": "string"
+                },
+                "_b_K": {
+                  "type": "string"
+                },
+                "_k_b": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "datum",
+                "_b_K",
+                "_k_b"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "datum": {
+                  "type": "string"
+                },
+                "_b_K": {
+                  "type": "string"
+                },
+                "_k_b": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "datum",
+                "_b_K",
+                "_k_b"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "datum": {
+                  "type": "string"
+                },
+                "_b_K": {
+                  "type": "string"
+                },
+                "_k_b": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "datum",
+                "_b_K",
+                "_k_b"
+              ]
+            }
+          ]
+        },
+        "bejelentve": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "_b_k": {
+                  "type": "string"
+                },
+                "_b_p": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "_b_k",
+                "_b_p"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "_b_k": {
+                  "type": "string"
+                },
+                "_b_p": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "_b_k",
+                "_b_p"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "_b_k": {
+                  "type": "string"
+                },
+                "_b_p": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "_b_k",
+                "_b_p"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "_b_k": {
+                  "type": "string"
+                },
+                "_b_p": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "_b_k",
+                "_b_p"
+              ]
+            }
+          ]
+        },
+        "dolgozik": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "_b_k": {
+                  "type": "string"
+                },
+                "_b_d": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "_b_k",
+                "_b_d"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "_b_k": {
+                  "type": "string"
+                },
+                "_b_d": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "_b_k",
+                "_b_d"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "_b_k": {
+                  "type": "string"
+                },
+                "_b_d": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "_b_k",
+                "_b_d"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "_b_k": {
+                  "type": "string"
+                },
+                "_b_d": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "_b_k",
+                "_b_d"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "luxusbar",
+        "patron",
+        "dolgozo",
+        "besszallitoceg",
+        "termek",
+        "kezbesit",
+        "bejelentve",
+        "dolgozik"
+      ]
+    }
+  },
+  "required": [
+    "vendeglatas"
+  ]
+}

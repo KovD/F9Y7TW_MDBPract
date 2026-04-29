@@ -1,0 +1,246 @@
+{
+	"vendeglatas": {
+		"luxusbar": [
+			{
+				"nev": "Éjszaka Fénye",
+				"varos": "Budapest",
+				"_BarID": "b1"
+			},
+			{
+				"nev": "Arany Kehely",
+				"varos": "Debrecen",
+				"_BarID": "b2"
+			},
+			{
+				"nev": "Ezüst Hold",
+				"varos": "Szeged",
+				"_BarID": "b3"
+			},
+			{
+				"nev": "Gyémánt Klub",
+				"varos": "Budapest",
+				"_BarID": "b4"
+			}
+		],
+		"patron": [
+			{
+				"ig.szam": "123456AB",
+				"szulido": "1980-05-15",
+				"lakcim": "1052 Budapest, Váci utca 10.",
+				"patreon_email_cim": "pelda.patron@email.hu",
+				"kor": "45",
+				"nev": {
+					"titulus": "Dr.",
+					"keresztnev": "János",
+					"vezeteknev": "Kovács"
+				},
+				"_PatID": "p1"
+			},
+			{
+				"ig.szam": "234567XY",
+				"szulido": "1975-08-22",
+				"lakcim": "4024 Debrecen, Piac utca 5.",
+				"patreon_email_cim": "nagy.peter@email.hu",
+				"kor": "50",
+				"nev": {
+					"keresztnev": "Péter",
+					"vezeteknev": "Nagy"
+				},
+				"_PatID": "p2"
+			},
+			{
+				"ig.szam": "345678ZW",
+				"szulido": "1990-01-10",
+				"lakcim": "6720 Szeged, Kárász utca 2.",
+				"patreon_email_cim": "szabo.eva@email.hu",
+				"kor": "36",
+				"nev": {
+					"titulus": "Prof.",
+					"keresztnev": "Éva",
+					"vezeteknev": "Szabó"
+				},
+				"_PatID": "p3"
+			},
+			{
+				"ig.szam": "456789QW",
+				"szulido": "1988-11-30",
+				"lakcim": "1024 Budapest, Margit krt. 15.",
+				"patreon_email_cim": "kiss.gabor@email.hu",
+				"kor": "37",
+				"nev": {
+					"keresztnev": "Gábor",
+					"vezeteknev": "Kiss"
+				},
+				"_PatID": "p4"
+			}
+		],
+		"dolgozo": [
+			{
+				"ig.szam": "654321CD",
+				"szulido": "1995-10-20",
+				"lakcim": "1073 Budapest, Erzsébet krt. 12.",
+				"dolgozo_email_cim": "pelda.dolgozo@email.hu",
+				"kor": "30",
+				"nev": {
+					"keresztnev": "Anna",
+					"vezeteknev": "Tóth"
+				},
+				"_SzemID": "sz1"
+			},
+			{
+				"ig.szam": "765432EF",
+				"szulido": "1998-03-12",
+				"lakcim": "4032 Debrecen, Egyetem tér 1.",
+				"dolgozo_email_cim": "varga.bence@email.hu",
+				"kor": "28",
+				"nev": {
+					"keresztnev": "Bence",
+					"vezeteknev": "Varga"
+				},
+				"_SzemID": "sz2"
+			},
+			{
+				"ig.szam": "876543GH",
+				"szulido": "1992-07-05",
+				"lakcim": "6722 Szeged, Tisza Lajos krt. 8.",
+				"dolgozo_email_cim": "farkas.dora@email.hu",
+				"kor": "33",
+				"nev": {
+					"keresztnev": "Dóra",
+					"vezeteknev": "Farkas"
+				},
+				"_SzemID": "sz3"
+			},
+			{
+				"ig.szam": "987654IJ",
+				"szulido": "2000-12-01",
+				"lakcim": "1111 Budapest, Bartók Béla út 20.",
+				"dolgozo_email_cim": "horvath.mate@email.hu",
+				"kor": "25",
+				"nev": {
+					"keresztnev": "Máté",
+					"vezeteknev": "Horváth"
+				},
+				"_SzemID": "sz4"
+			}
+		],
+		"besszallitoceg": [
+			{
+				"nev": "ItalNagyker Kft.",
+				"telephely": "2040 Budaörs, Gyár utca 1.",
+				"_SzallID": "sz1"
+			},
+			{
+				"nev": "Borfutár Zrt.",
+				"telephely": "3300 Eger, Szépasszonyvölgy 10.",
+				"_SzallID": "sz2"
+			},
+			{
+				"nev": "Kézműves Sörök Kft.",
+				"telephely": "1095 Budapest, Soroksári út 48.",
+				"_SzallID": "sz3"
+			},
+			{
+				"nev": "GyümölcsLé Manufaktúra",
+				"telephely": "6000 Kecskemét, Gyár utca 2.",
+				"_SzallID": "sz4"
+			}
+		],
+		"termek": [
+			{
+				"termeknev": "Prémium Vodka",
+				"Ar_db": "12000",
+				"allergen": "Nincs",
+				"kezdoar": "9500",
+				"mennyiseg": "100",
+				"_TermID": "t1",
+				"_SzallID": "sz1"
+			},
+			{
+				"termeknev": "Egri Bikavér",
+				"Ar_db": "4500",
+				"allergen": "Szulfitok",
+				"kezdoar": "3000",
+				"mennyiseg": "50",
+				"_TermID": "t2",
+				"_SzallID": "sz2"
+			},
+			{
+				"termeknev": "IPA Sör",
+				"Ar_db": "1500",
+				"allergen": "Glutén",
+				"kezdoar": "900",
+				"mennyiseg": "200",
+				"_TermID": "t3",
+				"_SzallID": "sz3"
+			},
+			{
+				"termeknev": "Narancslé 100%",
+				"Ar_db": "2000",
+				"allergen": "Nincs",
+				"kezdoar": "1200",
+				"mennyiseg": "80",
+				"_TermID": "t4",
+				"_SzallID": "sz4"
+			}
+		],
+		"kezbesit": [
+			{
+				"datum": "2026-03-20",
+				"_b_K": "1b",
+				"_k_b": "1k"
+			},
+			{
+				"datum": "2026-03-22",
+				"_b_K": "b2",
+				"_k_b": "k2"
+			},
+			{
+				"datum": "2026-03-25",
+				"_b_K": "b3",
+				"_k_b": "k3"
+			},
+			{
+				"datum": "2026-03-28",
+				"_b_K": "b4",
+				"_k_b": "k4"
+			}
+		],
+		"bejelentve": [
+			{
+				"_b_k": "1b",
+				"_b_p": "p1"
+			},
+			{
+				"_b_k": "b2",
+				"_b_p": "p2"
+			},
+			{
+				"_b_k": "b3",
+				"_b_p": "p3"
+			},
+			{
+				"_b_k": "b4",
+				"_b_p": "p4"
+			}
+		],
+		"dolgozik": [
+			{
+				"_b_k": "1b",
+				"_b_d": "sz1"
+			},
+			{
+				"_b_k": "b2",
+				"_b_d": "sz2"
+			},
+			{
+				"_b_k": "b3",
+				"_b_d": "sz3"
+			},
+			{
+				"_b_k": "b4",
+				"_b_d": "sz4"
+			}
+		]
+	}
+}
