@@ -1,0 +1,75 @@
+﻿using MongoDB.Driver;
+using MongoTest.Models;
+
+class Program {
+    static void Main(string[] args)
+    {
+        var Client = new MongoClient("mongodb+srv://kovacsd435:db12@bookdb2026.mbjbb7u.mongodb.net/");
+        var database = Client.GetDatabase("vendeglatas");
+        var etteremCollection = database.GetCollection<Etterem>("ettermek");
+        var foszakacsCollection = database.GetCollection<Foszakacs>("foszakacsok");
+
+
+        var ettermek = etteremCollection .Find (_ => true ). ToList ();
+
+        foreach (var e in ettermek )
+        {
+            Console.WriteLine (" -------");
+            Console.WriteLine ($" Nev : {e.nev }");
+            Console.WriteLine ($" Varos : {e.cim ?. varos }");
+            Console.WriteLine ($" Utca : {e.cim ?. utca }");
+            Console.WriteLine ($" Street number : {e.cim ?.hazszam }");
+            Console.WriteLine ($" Csillag : {e.csillag}");
+            }
+
+        var foszakacsok = foszakacsCollection.Find(_ =>true).ToList();
+        
+
+        foreach (var f in foszakacsok)
+        {
+            Console.WriteLine("-------");
+            Console.WriteLine($"Nev: {f.nev}");
+            Console.WriteLine ($"letkor:{f.eletkor}");
+            Console.WriteLine($"Fkod:{f._fkod}");
+            Console.WriteLine($"EF:{f._e_f}");
+
+            Console.WriteLine("Vegzettseg:");
+            foreach (var v in f.vegzettseg)
+            {
+                Console.WriteLine ("-" + v);
+            }
+ 
+        }
+        var ujFoszakacs = new Foszakacs
+        {
+            nev = "Hegedűs Lajos",
+            eletkor = 25,
+            vegzettseg = new List<string> { "Le Cordon Bleu" },
+            _fkod = "f3",
+            _e_f = "e1"
+        };
+
+        foszakacsCollection.InsertOne(ujFoszakacs);
+        Console.WriteLine("Sikeres beszúrás!");       
+        
+
+        var filter = Builders<Etterem>.Filter.Eq(e => e.nev, "Valhalla");
+        var update = Builders<Etterem>.Update.Set(e => e.csillag, 3);
+        etteremCollection.UpdateOne(filter, update);
+        Console.WriteLine("Sikeres módosítás!");
+
+        var filter2 = Builders<Foszakacs>.Filter.Lt(f => f.eletkor, 30);
+        foszakacsCollection.DeleteMany(filter2);
+        Console.WriteLine("Sikeres törlés!");
+
+        var filter3 = Builders<Gyakornok>.Filter.Eq(g => g.nev, "Szilágyi István");
+        var update = Builders<Gyakornok>.Update.Push(g => g.muszak, "éjszaka");
+        gyakornokCollection.UpdateOne(filter3, update);
+        Console.WriteLine("Sikeres hozzáadás!");
+
+        foreach (var sz in reszlegek)
+        {
+            Console.WriteLine($"{sz.nev} - {sz.reszleg}");
+        }
+    }
+}
