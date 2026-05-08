@@ -1,0 +1,87 @@
+use vendeglatas
+
+
+db.termek.find({}, { termeknev: 1, Ar_db: 1,_id: 0 });
+db.termek.find({Ar_db:{ $gte: 2000 } });
+
+db.luxusbar.find({
+  $or:[{varos: "Budapest" }, { varos:"Szeged" }]
+});
+
+db.termek.find().sort({ Ar_db: -1 }).limit(3);
+db.dolgozo.find({ kor:{ $gte:"25", $lte: "33" } });
+
+...............................................................................
+db.termek.updateOne(
+  { termeknev: "IPA Sör" },
+  { $set: { Ar_db: 1800 } }
+);
+
+db.termek.updateOne(
+  {termeknev: "IPA Sör" },
+  { $push: { allergenek: "Komló" } }
+);
+...............................................................................
+db.termek.deleteMany({ mennyiseg:{$lt: "100" } });
+db.termek.countDocuments();
+...............................................................................
+Kis indexelés:
+db.luxusbar.createIndex({ varos: 1 });
+db.luxusbar.getIndexes();
+
+db.luxusbar.dropIndex("varos_1");
+...............................................................................
+Aggregáció:
+db.luxusbar.aggregate([
+  {
+    $group: {
+      _id: "$varos",
+      db_bar: { $sum: 1 }
+    }
+  },
+  { 
+    $sort: { db_bar: -1 } 
+  }
+]);
+...............................................................................
+Allergének szreinti csoportosítás:
+db.termek.aggregate([
+  { 
+    $unwind: "$allergenek" 
+  },
+  {
+    $group: {
+      _id: "$allergenek",
+      termekek_szama: { $sum: 1 }
+    }
+  },
+  { 
+    $sort: { termekek_szama: -1} 
+  }
+]);
+
+db.termek.aggregate([
+  {
+		$lookup: {
+			from: "besszallitoceg",
+			localField: "_SzallID",
+			foreignField: "_SzallID",
+			as: "szallito_adatok"
+		}
+	},
+  { 
+    $unwind: "$szallito_adatok" 
+  },
+  { 
+	$match: {Ar_db: { $gte: 1500 } } 
+  },
+  {
+    $project: {
+		_id: 0,
+		termeknev: 1,
+		ar: "$Ar_db",
+		beszallito_neve: "$szallito_adatok.nev",
+		telephely: "$szallito_adatok.telephely"
+	}
+  }
+]);

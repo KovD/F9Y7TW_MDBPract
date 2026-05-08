@@ -1,0 +1,40 @@
+{
+  "TempList": [
+    {
+      "termeknev": "Prémium Vodka",
+      "Ar_db": "12000",
+      "kezdoar": "10000",
+      "allergen": "Nincs",
+      "mennyiseg": "50",
+      "_TermID": "t1",
+      "_SzallID": "sz1"
+    },
+    {
+      "termeknev": "Kézműves Gin",
+      "Ar_db": "15000",
+      "kezdoar": "14000",
+      "allergen": "Nincs",
+      "mennyiseg": "30",
+      "_TermID": "t2",
+      "_SzallID": "sz2"
+    },
+    {
+      "termeknev": "Mogyorós Likőr",
+      "Ar_db": "8500",
+      "kezdoar": "8000",
+      "allergen": "Diófélék",
+      "mennyiseg": "20",
+      "_TermID": "t3",
+      "_SzallID": "sz1"
+    },
+    {
+      "termeknev": "Orosz Kaviár",
+      "Ar_db": "45000",
+      "kezdoar": "40000",
+      "allergen": "Hal",
+      "mennyiseg": "10",
+      "_TermID": "t4",
+      "_SzallID": "sz3"
+    }
+  ]
+}

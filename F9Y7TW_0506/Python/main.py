@@ -1,14 +1,14 @@
 import pymongo as mongo
 
-client = mongo.MongoClient("mongodb+srv://kovacsd435:db12@bookdb2026.mbjbb7u.mongodb.net/?appName=BookDB2026")
-db = client["vendeglatasAttila"]
+client = mongo.MongoClient("mongodb+srv://kovacsd435:-----@bookdb2026.mbjbb7u.mongodb.net/?appName=BookDB2026")
+db = client["vendeglatasAttilla"]
 
 etterem_coll = db["etterem"]
 foszakacs_coll = db["foszakacs"]
+
 etterem_coll.delete_many({})
 foszakacs_coll.delete_many({})
 
-print(etterem_coll)
 
 ettermek_adatok = [
     {

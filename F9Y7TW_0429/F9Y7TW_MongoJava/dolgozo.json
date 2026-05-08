@@ -1,0 +1,48 @@
+{
+  "TempList": [
+    {
+      "nev_vezeteknev": "Kovács",
+      "nev": {
+        "keresztnev": "János",
+        "vezeteknev": "Kovács",
+        "titulus": "Úr"
+      },
+      "kor": "35",
+      "dolgozo_email_cim": "kovacs.janos@luxusbar.hu",
+      "_SzemID": "d1"
+    },
+    {
+      "nev_vezeteknev": "Nagy",
+      "nev": {
+        "keresztnev": "Anna",
+        "vezeteknev": "Nagy",
+        "titulus": "Hölgy"
+      },
+      "kor": "28",
+      "dolgozo_email_cim": "nagy.anna@luxusbar.hu",
+      "_SzemID": "d2"
+    },
+    {
+      "nev_vezeteknev": "Szabó",
+      "nev": {
+        "keresztnev": "Bence",
+        "vezeteknev": "Szabó",
+        "titulus": ""
+      },
+      "kor": "22",
+      "dolgozo_email_cim": "szabo.bence@luxusbar.hu",
+      "_SzemID": "d3"
+    },
+    {
+      "nev_vezeteknev": "Tóth",
+      "nev": {
+        "keresztnev": "Eszter",
+        "vezeteknev": "Tóth",
+        "titulus": "Dr."
+      },
+      "kor": "42",
+      "dolgozo_email_cim": "toth.eszter@luxusbar.hu",
+      "_SzemID": "d4"
+    }
+  ]
+}

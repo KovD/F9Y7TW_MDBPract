@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "dgSpecHash": "sfx83SIGtfs=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Felhasználó\\Desktop\\MSC-jegyzetek\\modern_adatb\\F9Y7TW_MDBPract\\F9Y7TW_0429\\F9Y7TW_APIcsharpOwn\\F9Y7TW_APIcsharpOwn.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Felhasználó\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\Felhasználó\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\Felhasználó\\.nuget\\packages\\mongodb.bson\\3.8.0\\mongodb.bson.3.8.0.nupkg.sha512",
+    "C:\\Users\\Felhasználó\\.nuget\\packages\\mongodb.driver\\3.8.0\\mongodb.driver.3.8.0.nupkg.sha512",
+    "C:\\Users\\Felhasználó\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
+    "C:\\Users\\Felhasználó\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
+    "C:\\Users\\Felhasználó\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'Snappier' 1.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-pggp-6c3x-2xmx",
+      "projectPath": "C:\\Users\\Felhasználó\\Desktop\\MSC-jegyzetek\\modern_adatb\\F9Y7TW_MDBPract\\F9Y7TW_0429\\F9Y7TW_APIcsharpOwn\\F9Y7TW_APIcsharpOwn.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Felhasználó\\Desktop\\MSC-jegyzetek\\modern_adatb\\F9Y7TW_MDBPract\\F9Y7TW_0429\\F9Y7TW_APIcsharpOwn\\F9Y7TW_APIcsharpOwn.csproj",
+      "libraryId": "Snappier",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}
